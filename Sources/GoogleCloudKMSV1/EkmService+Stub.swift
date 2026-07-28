@@ -20,23 +20,39 @@ import Foundation
 #endif
 import GoogleCloudLocation
 import GoogleCloudWkt
-import GoogleIamV1
+import GoogleIAMV1
 import GoogleLongrunning
 import GoogleCloudGax
 
 extension Clients {
-  protocol AutokeyAdminStub {
-    func updateAutokeyConfig(
-      request: UpdateAutokeyConfigRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.AutokeyConfig
+  protocol EkmServiceStub {
+    func listEkmConnections(
+      request: ListEkmConnectionsRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudKMSV1.ListEkmConnectionsResponse
 
-    func getAutokeyConfig(
-      request: GetAutokeyConfigRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.AutokeyConfig
+    func getEkmConnection(
+      request: GetEkmConnectionRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudKMSV1.EkmConnection
 
-    func showEffectiveAutokeyConfig(
-      request: ShowEffectiveAutokeyConfigRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ShowEffectiveAutokeyConfigResponse
+    func createEkmConnection(
+      request: CreateEkmConnectionRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudKMSV1.EkmConnection
+
+    func updateEkmConnection(
+      request: UpdateEkmConnectionRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudKMSV1.EkmConnection
+
+    func getEkmConfig(
+      request: GetEkmConfigRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudKMSV1.EkmConfig
+
+    func updateEkmConfig(
+      request: UpdateEkmConfigRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudKMSV1.EkmConfig
+
+    func verifyConnectivity(
+      request: VerifyConnectivityRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudKMSV1.VerifyConnectivityResponse
 
     func listLocations(
       request: GoogleCloudLocation.ListLocationsRequest, options: GoogleCloudGax.RequestOptions
@@ -47,23 +63,23 @@ extension Clients {
     ) async throws -> GoogleCloudLocation.Location
 
     func setIamPolicy(
-      request: GoogleIamV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.Policy
+      request: GoogleIAMV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.Policy
 
     func getIamPolicy(
-      request: GoogleIamV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.Policy
+      request: GoogleIAMV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.Policy
 
     func testIamPermissions(
-      request: GoogleIamV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.TestIamPermissionsResponse
+      request: GoogleIAMV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.TestIamPermissionsResponse
 
     func getOperation(
       request: GoogleLongrunning.GetOperationRequest, options: GoogleCloudGax.RequestOptions
     ) async throws -> GoogleLongrunning.Operation
   }
 
-  class AutokeyAdminTransport: AutokeyAdminStub {
+  class EkmServiceTransport: EkmServiceStub {
     let inner: GoogleCloudGax.HTTPClient
 
     public init(_ options: GoogleCloudGax.ClientOptions = .init()) throws {
@@ -71,37 +87,34 @@ extension Clients {
         from: options, withDefaultEndpoint: "https://cloudkms.googleapis.com")
     }
 
-    public func updateAutokeyConfig(
-      request: UpdateAutokeyConfigRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.AutokeyConfig {
+    public func listEkmConnections(
+      request: ListEkmConnectionsRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudKMSV1.ListEkmConnectionsResponse {
       let path = try { () throws -> Swift.String in
-        guard let pathVariable0 = request.autokeyConfig.map({ $0.name }), !pathVariable0.isEmpty
-        else {
-          throw GoogleCloudGax.RequestError.binding(
-            "'request.autokey_config.name' is not set or is empty")
+        guard let pathVariable0 = request.parent as Swift.String?, !pathVariable0.isEmpty else {
+          throw GoogleCloudGax.RequestError.binding("'request.parent' is not set or is empty")
         }
-        return "/v1/\(pathVariable0)"
+        return "/v1/\(pathVariable0)/ekmConnections"
       }()
       var query = [
         URLQueryItem(name: "$alt", value: "json;enum-encoding=int")
       ]
       let encoder = GoogleCloudGax.QueryParameterEncoder()
-      query.append(contentsOf: try encoder.encode(request.updateMask, prefix: "updateMask"))
+      query.append(contentsOf: try encoder.encode(request.pageSize, prefix: "pageSize"))
+      query.append(contentsOf: try encoder.encode(request.pageToken, prefix: "pageToken"))
+      query.append(contentsOf: try encoder.encode(request.filter, prefix: "filter"))
+      query.append(contentsOf: try encoder.encode(request.orderBy, prefix: "orderBy"))
       var req = try await self.inner.Request(path: path, query: query)
-      req.httpMethod = "PATCH"
+      req.httpMethod = "GET"
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
-      if let body = request.autokeyConfig {
-        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        req.httpBody = try JSONEncoder().encode(body)
-      }
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.AutokeyConfig.self, from: data)
+        GoogleCloudKMSV1.ListEkmConnectionsResponse.self, from: data)
     }
 
-    public func getAutokeyConfig(
-      request: GetAutokeyConfigRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.AutokeyConfig {
+    public func getEkmConnection(
+      request: GetEkmConnectionRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudKMSV1.EkmConnection {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -116,17 +129,72 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.AutokeyConfig.self, from: data)
+        GoogleCloudKMSV1.EkmConnection.self, from: data)
     }
 
-    public func showEffectiveAutokeyConfig(
-      request: ShowEffectiveAutokeyConfigRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ShowEffectiveAutokeyConfigResponse {
+    public func createEkmConnection(
+      request: CreateEkmConnectionRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudKMSV1.EkmConnection {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.parent as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.parent' is not set or is empty")
         }
-        return "/v1/\(pathVariable0):showEffectiveAutokeyConfig"
+        return "/v1/\(pathVariable0)/ekmConnections"
+      }()
+      var query = [
+        URLQueryItem(name: "$alt", value: "json;enum-encoding=int")
+      ]
+      let encoder = GoogleCloudGax.QueryParameterEncoder()
+      query.append(
+        contentsOf: try encoder.encode(request.ekmConnectionId, prefix: "ekmConnectionId"))
+      var req = try await self.inner.Request(path: path, query: query)
+      req.httpMethod = "POST"
+      req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
+      if let body = request.ekmConnection {
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.httpBody = try JSONEncoder().encode(body)
+      }
+      let (data, _) = try await self.inner.rpc(for: req).get()
+      return try GoogleCloudWkt._ProtoJSONDecoder().decode(
+        GoogleCloudKMSV1.EkmConnection.self, from: data)
+    }
+
+    public func updateEkmConnection(
+      request: UpdateEkmConnectionRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudKMSV1.EkmConnection {
+      let path = try { () throws -> Swift.String in
+        guard let pathVariable0 = request.ekmConnection.map({ $0.name }), !pathVariable0.isEmpty
+        else {
+          throw GoogleCloudGax.RequestError.binding(
+            "'request.ekm_connection.name' is not set or is empty")
+        }
+        return "/v1/\(pathVariable0)"
+      }()
+      var query = [
+        URLQueryItem(name: "$alt", value: "json;enum-encoding=int")
+      ]
+      let encoder = GoogleCloudGax.QueryParameterEncoder()
+      query.append(contentsOf: try encoder.encode(request.updateMask, prefix: "updateMask"))
+      var req = try await self.inner.Request(path: path, query: query)
+      req.httpMethod = "PATCH"
+      req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
+      if let body = request.ekmConnection {
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.httpBody = try JSONEncoder().encode(body)
+      }
+      let (data, _) = try await self.inner.rpc(for: req).get()
+      return try GoogleCloudWkt._ProtoJSONDecoder().decode(
+        GoogleCloudKMSV1.EkmConnection.self, from: data)
+    }
+
+    public func getEkmConfig(
+      request: GetEkmConfigRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudKMSV1.EkmConfig {
+      let path = try { () throws -> Swift.String in
+        guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
+          throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
+        }
+        return "/v1/\(pathVariable0)"
       }()
       let query = [
         URLQueryItem(name: "$alt", value: "json;enum-encoding=int")
@@ -136,7 +204,54 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.ShowEffectiveAutokeyConfigResponse.self, from: data)
+        GoogleCloudKMSV1.EkmConfig.self, from: data)
+    }
+
+    public func updateEkmConfig(
+      request: UpdateEkmConfigRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudKMSV1.EkmConfig {
+      let path = try { () throws -> Swift.String in
+        guard let pathVariable0 = request.ekmConfig.map({ $0.name }), !pathVariable0.isEmpty else {
+          throw GoogleCloudGax.RequestError.binding(
+            "'request.ekm_config.name' is not set or is empty")
+        }
+        return "/v1/\(pathVariable0)"
+      }()
+      var query = [
+        URLQueryItem(name: "$alt", value: "json;enum-encoding=int")
+      ]
+      let encoder = GoogleCloudGax.QueryParameterEncoder()
+      query.append(contentsOf: try encoder.encode(request.updateMask, prefix: "updateMask"))
+      var req = try await self.inner.Request(path: path, query: query)
+      req.httpMethod = "PATCH"
+      req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
+      if let body = request.ekmConfig {
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.httpBody = try JSONEncoder().encode(body)
+      }
+      let (data, _) = try await self.inner.rpc(for: req).get()
+      return try GoogleCloudWkt._ProtoJSONDecoder().decode(
+        GoogleCloudKMSV1.EkmConfig.self, from: data)
+    }
+
+    public func verifyConnectivity(
+      request: VerifyConnectivityRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudKMSV1.VerifyConnectivityResponse {
+      let path = try { () throws -> Swift.String in
+        guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
+          throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
+        }
+        return "/v1/\(pathVariable0):verifyConnectivity"
+      }()
+      let query = [
+        URLQueryItem(name: "$alt", value: "json;enum-encoding=int")
+      ]
+      var req = try await self.inner.Request(path: path, query: query)
+      req.httpMethod = "GET"
+      req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
+      let (data, _) = try await self.inner.rpc(for: req).get()
+      return try GoogleCloudWkt._ProtoJSONDecoder().decode(
+        GoogleCloudKMSV1.VerifyConnectivityResponse.self, from: data)
     }
 
     public func listLocations(
@@ -184,8 +299,8 @@ extension Clients {
     }
 
     public func setIamPolicy(
-      request: GoogleIamV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.Policy {
+      request: GoogleIAMV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.Policy {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.resource as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.resource' is not set or is empty")
@@ -202,12 +317,12 @@ extension Clients {
       req.httpBody = try JSONEncoder().encode(request)
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleIamV1.Policy.self, from: data)
+        GoogleIAMV1.Policy.self, from: data)
     }
 
     public func getIamPolicy(
-      request: GoogleIamV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.Policy {
+      request: GoogleIAMV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.Policy {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.resource as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.resource' is not set or is empty")
@@ -224,12 +339,12 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleIamV1.Policy.self, from: data)
+        GoogleIAMV1.Policy.self, from: data)
     }
 
     public func testIamPermissions(
-      request: GoogleIamV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.TestIamPermissionsResponse {
+      request: GoogleIAMV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.TestIamPermissionsResponse {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.resource as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.resource' is not set or is empty")
@@ -246,7 +361,7 @@ extension Clients {
       req.httpBody = try JSONEncoder().encode(request)
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleIamV1.TestIamPermissionsResponse.self, from: data)
+        GoogleIAMV1.TestIamPermissionsResponse.self, from: data)
     }
 
     public func getOperation(

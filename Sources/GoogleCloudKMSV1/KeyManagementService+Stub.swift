@@ -20,7 +20,7 @@ import Foundation
 #endif
 import GoogleCloudLocation
 import GoogleCloudWkt
-import GoogleIamV1
+import GoogleIAMV1
 import GoogleLongrunning
 import GoogleRpc
 import GoogleCloudGax
@@ -29,59 +29,59 @@ extension Clients {
   protocol KeyManagementServiceStub {
     func listKeyRings(
       request: ListKeyRingsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ListKeyRingsResponse
+    ) async throws -> GoogleCloudKMSV1.ListKeyRingsResponse
 
     func listCryptoKeys(
       request: ListCryptoKeysRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ListCryptoKeysResponse
+    ) async throws -> GoogleCloudKMSV1.ListCryptoKeysResponse
 
     func listCryptoKeyVersions(
       request: ListCryptoKeyVersionsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ListCryptoKeyVersionsResponse
+    ) async throws -> GoogleCloudKMSV1.ListCryptoKeyVersionsResponse
 
     func listImportJobs(
       request: ListImportJobsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ListImportJobsResponse
+    ) async throws -> GoogleCloudKMSV1.ListImportJobsResponse
 
     func listRetiredResources(
       request: ListRetiredResourcesRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ListRetiredResourcesResponse
+    ) async throws -> GoogleCloudKMSV1.ListRetiredResourcesResponse
 
     func getKeyRing(
       request: GetKeyRingRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.KeyRing
+    ) async throws -> GoogleCloudKMSV1.KeyRing
 
     func getCryptoKey(
       request: GetCryptoKeyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.CryptoKey
+    ) async throws -> GoogleCloudKMSV1.CryptoKey
 
     func getCryptoKeyVersion(
       request: GetCryptoKeyVersionRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.CryptoKeyVersion
+    ) async throws -> GoogleCloudKMSV1.CryptoKeyVersion
 
     func getPublicKey(
       request: GetPublicKeyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.PublicKey
+    ) async throws -> GoogleCloudKMSV1.PublicKey
 
     func getImportJob(
       request: GetImportJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ImportJob
+    ) async throws -> GoogleCloudKMSV1.ImportJob
 
     func getRetiredResource(
       request: GetRetiredResourceRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.RetiredResource
+    ) async throws -> GoogleCloudKMSV1.RetiredResource
 
     func createKeyRing(
       request: CreateKeyRingRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.KeyRing
+    ) async throws -> GoogleCloudKMSV1.KeyRing
 
     func createCryptoKey(
       request: CreateCryptoKeyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.CryptoKey
+    ) async throws -> GoogleCloudKMSV1.CryptoKey
 
     func createCryptoKeyVersion(
       request: CreateCryptoKeyVersionRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.CryptoKeyVersion
+    ) async throws -> GoogleCloudKMSV1.CryptoKeyVersion
 
     func deleteCryptoKey(
       request: DeleteCryptoKeyRequest, options: GoogleCloudGax.RequestOptions
@@ -93,81 +93,81 @@ extension Clients {
 
     func importCryptoKeyVersion(
       request: ImportCryptoKeyVersionRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.CryptoKeyVersion
+    ) async throws -> GoogleCloudKMSV1.CryptoKeyVersion
 
     func importTrustedKeyWrappedCryptoKeyVersion(
       request: ImportTrustedKeyWrappedCryptoKeyVersionRequest,
       options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.CryptoKeyVersion
+    ) async throws -> GoogleCloudKMSV1.CryptoKeyVersion
 
     func exportTrustedKeyWrappedCryptoKeyVersion(
       request: ExportTrustedKeyWrappedCryptoKeyVersionRequest,
       options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ExportTrustedKeyWrappedCryptoKeyVersionResponse
+    ) async throws -> GoogleCloudKMSV1.ExportTrustedKeyWrappedCryptoKeyVersionResponse
 
     func createImportJob(
       request: CreateImportJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ImportJob
+    ) async throws -> GoogleCloudKMSV1.ImportJob
 
     func updateCryptoKey(
       request: UpdateCryptoKeyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.CryptoKey
+    ) async throws -> GoogleCloudKMSV1.CryptoKey
 
     func updateCryptoKeyVersion(
       request: UpdateCryptoKeyVersionRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.CryptoKeyVersion
+    ) async throws -> GoogleCloudKMSV1.CryptoKeyVersion
 
     func updateCryptoKeyPrimaryVersion(
       request: UpdateCryptoKeyPrimaryVersionRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.CryptoKey
+    ) async throws -> GoogleCloudKMSV1.CryptoKey
 
     func destroyCryptoKeyVersion(
       request: DestroyCryptoKeyVersionRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.CryptoKeyVersion
+    ) async throws -> GoogleCloudKMSV1.CryptoKeyVersion
 
     func restoreCryptoKeyVersion(
       request: RestoreCryptoKeyVersionRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.CryptoKeyVersion
+    ) async throws -> GoogleCloudKMSV1.CryptoKeyVersion
 
     func encrypt(
       request: EncryptRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.EncryptResponse
+    ) async throws -> GoogleCloudKMSV1.EncryptResponse
 
     func decrypt(
       request: DecryptRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.DecryptResponse
+    ) async throws -> GoogleCloudKMSV1.DecryptResponse
 
     func rawEncrypt(
       request: RawEncryptRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.RawEncryptResponse
+    ) async throws -> GoogleCloudKMSV1.RawEncryptResponse
 
     func rawDecrypt(
       request: RawDecryptRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.RawDecryptResponse
+    ) async throws -> GoogleCloudKMSV1.RawDecryptResponse
 
     func asymmetricSign(
       request: AsymmetricSignRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.AsymmetricSignResponse
+    ) async throws -> GoogleCloudKMSV1.AsymmetricSignResponse
 
     func asymmetricDecrypt(
       request: AsymmetricDecryptRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.AsymmetricDecryptResponse
+    ) async throws -> GoogleCloudKMSV1.AsymmetricDecryptResponse
 
     func macSign(
       request: MacSignRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.MacSignResponse
+    ) async throws -> GoogleCloudKMSV1.MacSignResponse
 
     func macVerify(
       request: MacVerifyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.MacVerifyResponse
+    ) async throws -> GoogleCloudKMSV1.MacVerifyResponse
 
     func decapsulate(
       request: DecapsulateRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.DecapsulateResponse
+    ) async throws -> GoogleCloudKMSV1.DecapsulateResponse
 
     func generateRandomBytes(
       request: GenerateRandomBytesRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.GenerateRandomBytesResponse
+    ) async throws -> GoogleCloudKMSV1.GenerateRandomBytesResponse
 
     func listLocations(
       request: GoogleCloudLocation.ListLocationsRequest, options: GoogleCloudGax.RequestOptions
@@ -178,16 +178,16 @@ extension Clients {
     ) async throws -> GoogleCloudLocation.Location
 
     func setIamPolicy(
-      request: GoogleIamV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.Policy
+      request: GoogleIAMV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.Policy
 
     func getIamPolicy(
-      request: GoogleIamV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.Policy
+      request: GoogleIAMV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.Policy
 
     func testIamPermissions(
-      request: GoogleIamV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.TestIamPermissionsResponse
+      request: GoogleIAMV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.TestIamPermissionsResponse
 
     func getOperation(
       request: GoogleLongrunning.GetOperationRequest, options: GoogleCloudGax.RequestOptions
@@ -204,7 +204,7 @@ extension Clients {
 
     public func listKeyRings(
       request: ListKeyRingsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ListKeyRingsResponse {
+    ) async throws -> GoogleCloudKMSV1.ListKeyRingsResponse {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.parent as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.parent' is not set or is empty")
@@ -224,12 +224,12 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.ListKeyRingsResponse.self, from: data)
+        GoogleCloudKMSV1.ListKeyRingsResponse.self, from: data)
     }
 
     public func listCryptoKeys(
       request: ListCryptoKeysRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ListCryptoKeysResponse {
+    ) async throws -> GoogleCloudKMSV1.ListCryptoKeysResponse {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.parent as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.parent' is not set or is empty")
@@ -250,12 +250,12 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.ListCryptoKeysResponse.self, from: data)
+        GoogleCloudKMSV1.ListCryptoKeysResponse.self, from: data)
     }
 
     public func listCryptoKeyVersions(
       request: ListCryptoKeyVersionsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ListCryptoKeyVersionsResponse {
+    ) async throws -> GoogleCloudKMSV1.ListCryptoKeyVersionsResponse {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.parent as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.parent' is not set or is empty")
@@ -276,12 +276,12 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.ListCryptoKeyVersionsResponse.self, from: data)
+        GoogleCloudKMSV1.ListCryptoKeyVersionsResponse.self, from: data)
     }
 
     public func listImportJobs(
       request: ListImportJobsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ListImportJobsResponse {
+    ) async throws -> GoogleCloudKMSV1.ListImportJobsResponse {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.parent as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.parent' is not set or is empty")
@@ -301,12 +301,12 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.ListImportJobsResponse.self, from: data)
+        GoogleCloudKMSV1.ListImportJobsResponse.self, from: data)
     }
 
     public func listRetiredResources(
       request: ListRetiredResourcesRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ListRetiredResourcesResponse {
+    ) async throws -> GoogleCloudKMSV1.ListRetiredResourcesResponse {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.parent as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.parent' is not set or is empty")
@@ -324,12 +324,12 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.ListRetiredResourcesResponse.self, from: data)
+        GoogleCloudKMSV1.ListRetiredResourcesResponse.self, from: data)
     }
 
     public func getKeyRing(
       request: GetKeyRingRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.KeyRing {
+    ) async throws -> GoogleCloudKMSV1.KeyRing {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -344,12 +344,12 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.KeyRing.self, from: data)
+        GoogleCloudKMSV1.KeyRing.self, from: data)
     }
 
     public func getCryptoKey(
       request: GetCryptoKeyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.CryptoKey {
+    ) async throws -> GoogleCloudKMSV1.CryptoKey {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -364,12 +364,12 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.CryptoKey.self, from: data)
+        GoogleCloudKMSV1.CryptoKey.self, from: data)
     }
 
     public func getCryptoKeyVersion(
       request: GetCryptoKeyVersionRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.CryptoKeyVersion {
+    ) async throws -> GoogleCloudKMSV1.CryptoKeyVersion {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -384,12 +384,12 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.CryptoKeyVersion.self, from: data)
+        GoogleCloudKMSV1.CryptoKeyVersion.self, from: data)
     }
 
     public func getPublicKey(
       request: GetPublicKeyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.PublicKey {
+    ) async throws -> GoogleCloudKMSV1.PublicKey {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -407,12 +407,12 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.PublicKey.self, from: data)
+        GoogleCloudKMSV1.PublicKey.self, from: data)
     }
 
     public func getImportJob(
       request: GetImportJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ImportJob {
+    ) async throws -> GoogleCloudKMSV1.ImportJob {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -430,12 +430,12 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.ImportJob.self, from: data)
+        GoogleCloudKMSV1.ImportJob.self, from: data)
     }
 
     public func getRetiredResource(
       request: GetRetiredResourceRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.RetiredResource {
+    ) async throws -> GoogleCloudKMSV1.RetiredResource {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -450,12 +450,12 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.RetiredResource.self, from: data)
+        GoogleCloudKMSV1.RetiredResource.self, from: data)
     }
 
     public func createKeyRing(
       request: CreateKeyRingRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.KeyRing {
+    ) async throws -> GoogleCloudKMSV1.KeyRing {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.parent as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.parent' is not set or is empty")
@@ -476,12 +476,12 @@ extension Clients {
       }
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.KeyRing.self, from: data)
+        GoogleCloudKMSV1.KeyRing.self, from: data)
     }
 
     public func createCryptoKey(
       request: CreateCryptoKeyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.CryptoKey {
+    ) async throws -> GoogleCloudKMSV1.CryptoKey {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.parent as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.parent' is not set or is empty")
@@ -508,12 +508,12 @@ extension Clients {
       }
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.CryptoKey.self, from: data)
+        GoogleCloudKMSV1.CryptoKey.self, from: data)
     }
 
     public func createCryptoKeyVersion(
       request: CreateCryptoKeyVersionRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.CryptoKeyVersion {
+    ) async throws -> GoogleCloudKMSV1.CryptoKeyVersion {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.parent as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.parent' is not set or is empty")
@@ -532,7 +532,7 @@ extension Clients {
       }
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.CryptoKeyVersion.self, from: data)
+        GoogleCloudKMSV1.CryptoKeyVersion.self, from: data)
     }
 
     public func deleteCryptoKey(
@@ -577,7 +577,7 @@ extension Clients {
 
     public func importCryptoKeyVersion(
       request: ImportCryptoKeyVersionRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.CryptoKeyVersion {
+    ) async throws -> GoogleCloudKMSV1.CryptoKeyVersion {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.parent as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.parent' is not set or is empty")
@@ -594,13 +594,13 @@ extension Clients {
       req.httpBody = try JSONEncoder().encode(request)
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.CryptoKeyVersion.self, from: data)
+        GoogleCloudKMSV1.CryptoKeyVersion.self, from: data)
     }
 
     public func importTrustedKeyWrappedCryptoKeyVersion(
       request: ImportTrustedKeyWrappedCryptoKeyVersionRequest,
       options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.CryptoKeyVersion {
+    ) async throws -> GoogleCloudKMSV1.CryptoKeyVersion {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.parent as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.parent' is not set or is empty")
@@ -617,13 +617,13 @@ extension Clients {
       req.httpBody = try JSONEncoder().encode(request)
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.CryptoKeyVersion.self, from: data)
+        GoogleCloudKMSV1.CryptoKeyVersion.self, from: data)
     }
 
     public func exportTrustedKeyWrappedCryptoKeyVersion(
       request: ExportTrustedKeyWrappedCryptoKeyVersionRequest,
       options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ExportTrustedKeyWrappedCryptoKeyVersionResponse {
+    ) async throws -> GoogleCloudKMSV1.ExportTrustedKeyWrappedCryptoKeyVersionResponse {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -640,12 +640,12 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.ExportTrustedKeyWrappedCryptoKeyVersionResponse.self, from: data)
+        GoogleCloudKMSV1.ExportTrustedKeyWrappedCryptoKeyVersionResponse.self, from: data)
     }
 
     public func createImportJob(
       request: CreateImportJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ImportJob {
+    ) async throws -> GoogleCloudKMSV1.ImportJob {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.parent as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.parent' is not set or is empty")
@@ -666,12 +666,12 @@ extension Clients {
       }
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.ImportJob.self, from: data)
+        GoogleCloudKMSV1.ImportJob.self, from: data)
     }
 
     public func updateCryptoKey(
       request: UpdateCryptoKeyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.CryptoKey {
+    ) async throws -> GoogleCloudKMSV1.CryptoKey {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.cryptoKey.map({ $0.name }), !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding(
@@ -693,12 +693,12 @@ extension Clients {
       }
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.CryptoKey.self, from: data)
+        GoogleCloudKMSV1.CryptoKey.self, from: data)
     }
 
     public func updateCryptoKeyVersion(
       request: UpdateCryptoKeyVersionRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.CryptoKeyVersion {
+    ) async throws -> GoogleCloudKMSV1.CryptoKeyVersion {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.cryptoKeyVersion.map({ $0.name }), !pathVariable0.isEmpty
         else {
@@ -721,12 +721,12 @@ extension Clients {
       }
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.CryptoKeyVersion.self, from: data)
+        GoogleCloudKMSV1.CryptoKeyVersion.self, from: data)
     }
 
     public func updateCryptoKeyPrimaryVersion(
       request: UpdateCryptoKeyPrimaryVersionRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.CryptoKey {
+    ) async throws -> GoogleCloudKMSV1.CryptoKey {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -743,12 +743,12 @@ extension Clients {
       req.httpBody = try JSONEncoder().encode(request)
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.CryptoKey.self, from: data)
+        GoogleCloudKMSV1.CryptoKey.self, from: data)
     }
 
     public func destroyCryptoKeyVersion(
       request: DestroyCryptoKeyVersionRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.CryptoKeyVersion {
+    ) async throws -> GoogleCloudKMSV1.CryptoKeyVersion {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -765,12 +765,12 @@ extension Clients {
       req.httpBody = try JSONEncoder().encode(request)
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.CryptoKeyVersion.self, from: data)
+        GoogleCloudKMSV1.CryptoKeyVersion.self, from: data)
     }
 
     public func restoreCryptoKeyVersion(
       request: RestoreCryptoKeyVersionRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.CryptoKeyVersion {
+    ) async throws -> GoogleCloudKMSV1.CryptoKeyVersion {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -787,12 +787,12 @@ extension Clients {
       req.httpBody = try JSONEncoder().encode(request)
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.CryptoKeyVersion.self, from: data)
+        GoogleCloudKMSV1.CryptoKeyVersion.self, from: data)
     }
 
     public func encrypt(
       request: EncryptRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.EncryptResponse {
+    ) async throws -> GoogleCloudKMSV1.EncryptResponse {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -809,12 +809,12 @@ extension Clients {
       req.httpBody = try JSONEncoder().encode(request)
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.EncryptResponse.self, from: data)
+        GoogleCloudKMSV1.EncryptResponse.self, from: data)
     }
 
     public func decrypt(
       request: DecryptRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.DecryptResponse {
+    ) async throws -> GoogleCloudKMSV1.DecryptResponse {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -831,12 +831,12 @@ extension Clients {
       req.httpBody = try JSONEncoder().encode(request)
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.DecryptResponse.self, from: data)
+        GoogleCloudKMSV1.DecryptResponse.self, from: data)
     }
 
     public func rawEncrypt(
       request: RawEncryptRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.RawEncryptResponse {
+    ) async throws -> GoogleCloudKMSV1.RawEncryptResponse {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -853,12 +853,12 @@ extension Clients {
       req.httpBody = try JSONEncoder().encode(request)
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.RawEncryptResponse.self, from: data)
+        GoogleCloudKMSV1.RawEncryptResponse.self, from: data)
     }
 
     public func rawDecrypt(
       request: RawDecryptRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.RawDecryptResponse {
+    ) async throws -> GoogleCloudKMSV1.RawDecryptResponse {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -875,12 +875,12 @@ extension Clients {
       req.httpBody = try JSONEncoder().encode(request)
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.RawDecryptResponse.self, from: data)
+        GoogleCloudKMSV1.RawDecryptResponse.self, from: data)
     }
 
     public func asymmetricSign(
       request: AsymmetricSignRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.AsymmetricSignResponse {
+    ) async throws -> GoogleCloudKMSV1.AsymmetricSignResponse {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -897,12 +897,12 @@ extension Clients {
       req.httpBody = try JSONEncoder().encode(request)
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.AsymmetricSignResponse.self, from: data)
+        GoogleCloudKMSV1.AsymmetricSignResponse.self, from: data)
     }
 
     public func asymmetricDecrypt(
       request: AsymmetricDecryptRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.AsymmetricDecryptResponse {
+    ) async throws -> GoogleCloudKMSV1.AsymmetricDecryptResponse {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -919,12 +919,12 @@ extension Clients {
       req.httpBody = try JSONEncoder().encode(request)
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.AsymmetricDecryptResponse.self, from: data)
+        GoogleCloudKMSV1.AsymmetricDecryptResponse.self, from: data)
     }
 
     public func macSign(
       request: MacSignRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.MacSignResponse {
+    ) async throws -> GoogleCloudKMSV1.MacSignResponse {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -941,12 +941,12 @@ extension Clients {
       req.httpBody = try JSONEncoder().encode(request)
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.MacSignResponse.self, from: data)
+        GoogleCloudKMSV1.MacSignResponse.self, from: data)
     }
 
     public func macVerify(
       request: MacVerifyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.MacVerifyResponse {
+    ) async throws -> GoogleCloudKMSV1.MacVerifyResponse {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -963,12 +963,12 @@ extension Clients {
       req.httpBody = try JSONEncoder().encode(request)
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.MacVerifyResponse.self, from: data)
+        GoogleCloudKMSV1.MacVerifyResponse.self, from: data)
     }
 
     public func decapsulate(
       request: DecapsulateRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.DecapsulateResponse {
+    ) async throws -> GoogleCloudKMSV1.DecapsulateResponse {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -985,12 +985,12 @@ extension Clients {
       req.httpBody = try JSONEncoder().encode(request)
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.DecapsulateResponse.self, from: data)
+        GoogleCloudKMSV1.DecapsulateResponse.self, from: data)
     }
 
     public func generateRandomBytes(
       request: GenerateRandomBytesRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.GenerateRandomBytesResponse {
+    ) async throws -> GoogleCloudKMSV1.GenerateRandomBytesResponse {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.location as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.location' is not set or is empty")
@@ -1007,7 +1007,7 @@ extension Clients {
       req.httpBody = try JSONEncoder().encode(request)
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleCloudKmsV1.GenerateRandomBytesResponse.self, from: data)
+        GoogleCloudKMSV1.GenerateRandomBytesResponse.self, from: data)
     }
 
     public func listLocations(
@@ -1055,8 +1055,8 @@ extension Clients {
     }
 
     public func setIamPolicy(
-      request: GoogleIamV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.Policy {
+      request: GoogleIAMV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.Policy {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.resource as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.resource' is not set or is empty")
@@ -1073,12 +1073,12 @@ extension Clients {
       req.httpBody = try JSONEncoder().encode(request)
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleIamV1.Policy.self, from: data)
+        GoogleIAMV1.Policy.self, from: data)
     }
 
     public func getIamPolicy(
-      request: GoogleIamV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.Policy {
+      request: GoogleIAMV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.Policy {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.resource as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.resource' is not set or is empty")
@@ -1095,12 +1095,12 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleIamV1.Policy.self, from: data)
+        GoogleIAMV1.Policy.self, from: data)
     }
 
     public func testIamPermissions(
-      request: GoogleIamV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.TestIamPermissionsResponse {
+      request: GoogleIAMV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.TestIamPermissionsResponse {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.resource as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.resource' is not set or is empty")
@@ -1117,7 +1117,7 @@ extension Clients {
       req.httpBody = try JSONEncoder().encode(request)
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleIamV1.TestIamPermissionsResponse.self, from: data)
+        GoogleIAMV1.TestIamPermissionsResponse.self, from: data)
     }
 
     public func getOperation(

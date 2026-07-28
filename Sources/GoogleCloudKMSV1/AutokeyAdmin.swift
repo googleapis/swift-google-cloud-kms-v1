@@ -20,7 +20,7 @@ import Foundation
 #endif
 import GoogleCloudLocation
 import GoogleCloudWkt
-import GoogleIamV1
+import GoogleIAMV1
 import GoogleLongrunning
 import GoogleCloudGax
 
@@ -66,7 +66,7 @@ public class AutokeyAdminClient: Clients.AutokeyAdminProtocol {
   /// @Snippet(path: "AutokeyAdmin_UpdateAutokeyConfig")
   public func updateAutokeyConfig(
     request: UpdateAutokeyConfigRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudKmsV1.AutokeyConfig {
+  ) async throws -> GoogleCloudKMSV1.AutokeyConfig {
     try await self.inner.updateAutokeyConfig(request: request, options: options)
   }
 
@@ -78,7 +78,7 @@ public class AutokeyAdminClient: Clients.AutokeyAdminProtocol {
   /// @Snippet(path: "AutokeyAdmin_GetAutokeyConfig")
   public func getAutokeyConfig(
     request: GetAutokeyConfigRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudKmsV1.AutokeyConfig {
+  ) async throws -> GoogleCloudKMSV1.AutokeyConfig {
     try await self.inner.getAutokeyConfig(request: request, options: options)
   }
 
@@ -87,7 +87,7 @@ public class AutokeyAdminClient: Clients.AutokeyAdminProtocol {
   /// @Snippet(path: "AutokeyAdmin_ShowEffectiveAutokeyConfig")
   public func showEffectiveAutokeyConfig(
     request: ShowEffectiveAutokeyConfigRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudKmsV1.ShowEffectiveAutokeyConfigResponse {
+  ) async throws -> GoogleCloudKMSV1.ShowEffectiveAutokeyConfigResponse {
     try await self.inner.showEffectiveAutokeyConfig(request: request, options: options)
   }
 
@@ -166,8 +166,8 @@ public class AutokeyAdminClient: Clients.AutokeyAdminProtocol {
   ///
   /// @Snippet(path: "AutokeyAdmin_SetIamPolicy")
   public func setIamPolicy(
-    request: GoogleIamV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleIamV1.Policy {
+    request: GoogleIAMV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+  ) async throws -> GoogleIAMV1.Policy {
     try await self.inner.setIamPolicy(request: request, options: options)
   }
 
@@ -176,8 +176,8 @@ public class AutokeyAdminClient: Clients.AutokeyAdminProtocol {
   ///
   /// @Snippet(path: "AutokeyAdmin_GetIamPolicy")
   public func getIamPolicy(
-    request: GoogleIamV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleIamV1.Policy {
+    request: GoogleIAMV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+  ) async throws -> GoogleIAMV1.Policy {
     try await self.inner.getIamPolicy(request: request, options: options)
   }
 
@@ -191,8 +191,8 @@ public class AutokeyAdminClient: Clients.AutokeyAdminProtocol {
   ///
   /// @Snippet(path: "AutokeyAdmin_TestIamPermissions")
   public func testIamPermissions(
-    request: GoogleIamV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleIamV1.TestIamPermissionsResponse {
+    request: GoogleIAMV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
+  ) async throws -> GoogleIAMV1.TestIamPermissionsResponse {
     try await self.inner.testIamPermissions(request: request, options: options)
   }
 
@@ -217,31 +217,31 @@ extension Clients {
   public protocol AutokeyAdminProtocol {
     /// See `AutokeyAdminClient.updateAutokeyConfig`.
     func updateAutokeyConfig(request: UpdateAutokeyConfigRequest) async throws
-      -> GoogleCloudKmsV1.AutokeyConfig
+      -> GoogleCloudKMSV1.AutokeyConfig
 
     /// See `AutokeyAdminClient.updateAutokeyConfig`.
     func updateAutokeyConfig(
       autokeyConfig: AutokeyConfig?,
       updateMask: GoogleCloudWkt.FieldMask?,
-    ) async throws -> GoogleCloudKmsV1.AutokeyConfig
+    ) async throws -> GoogleCloudKMSV1.AutokeyConfig
 
     /// See `AutokeyAdminClient.getAutokeyConfig`.
     func getAutokeyConfig(request: GetAutokeyConfigRequest) async throws
-      -> GoogleCloudKmsV1.AutokeyConfig
+      -> GoogleCloudKMSV1.AutokeyConfig
 
     /// See `AutokeyAdminClient.getAutokeyConfig`.
     func getAutokeyConfig(
       name: Swift.String,
-    ) async throws -> GoogleCloudKmsV1.AutokeyConfig
+    ) async throws -> GoogleCloudKMSV1.AutokeyConfig
 
     /// See `AutokeyAdminClient.showEffectiveAutokeyConfig`.
     func showEffectiveAutokeyConfig(request: ShowEffectiveAutokeyConfigRequest) async throws
-      -> GoogleCloudKmsV1.ShowEffectiveAutokeyConfigResponse
+      -> GoogleCloudKMSV1.ShowEffectiveAutokeyConfigResponse
 
     /// See `AutokeyAdminClient.showEffectiveAutokeyConfig`.
     func showEffectiveAutokeyConfig(
       parent: Swift.String,
-    ) async throws -> GoogleCloudKmsV1.ShowEffectiveAutokeyConfigResponse
+    ) async throws -> GoogleCloudKMSV1.ShowEffectiveAutokeyConfigResponse
 
     /// See `AutokeyAdminClient.listLocations`.
     func listLocations(request: GoogleCloudLocation.ListLocationsRequest) async throws
@@ -257,29 +257,29 @@ extension Clients {
       -> GoogleCloudLocation.Location
 
     /// See `AutokeyAdminClient.setIamPolicy`.
-    func setIamPolicy(request: GoogleIamV1.SetIamPolicyRequest) async throws -> GoogleIamV1.Policy
+    func setIamPolicy(request: GoogleIAMV1.SetIamPolicyRequest) async throws -> GoogleIAMV1.Policy
 
     /// See `AutokeyAdminClient.getIamPolicy`.
-    func getIamPolicy(request: GoogleIamV1.GetIamPolicyRequest) async throws -> GoogleIamV1.Policy
+    func getIamPolicy(request: GoogleIAMV1.GetIamPolicyRequest) async throws -> GoogleIAMV1.Policy
 
     /// See `AutokeyAdminClient.testIamPermissions`.
-    func testIamPermissions(request: GoogleIamV1.TestIamPermissionsRequest) async throws
-      -> GoogleIamV1.TestIamPermissionsResponse
+    func testIamPermissions(request: GoogleIAMV1.TestIamPermissionsRequest) async throws
+      -> GoogleIAMV1.TestIamPermissionsResponse
 
     /// See `AutokeyAdminClient.updateAutokeyConfig`.
     func updateAutokeyConfig(
       request: UpdateAutokeyConfigRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.AutokeyConfig
+    ) async throws -> GoogleCloudKMSV1.AutokeyConfig
 
     /// See `AutokeyAdminClient.getAutokeyConfig`.
     func getAutokeyConfig(
       request: GetAutokeyConfigRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.AutokeyConfig
+    ) async throws -> GoogleCloudKMSV1.AutokeyConfig
 
     /// See `AutokeyAdminClient.showEffectiveAutokeyConfig`.
     func showEffectiveAutokeyConfig(
       request: ShowEffectiveAutokeyConfigRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ShowEffectiveAutokeyConfigResponse
+    ) async throws -> GoogleCloudKMSV1.ShowEffectiveAutokeyConfigResponse
 
     /// See `AutokeyAdminClient.listLocations`.
     func listLocations(
@@ -298,39 +298,39 @@ extension Clients {
 
     /// See `AutokeyAdminClient.setIamPolicy`.
     func setIamPolicy(
-      request: GoogleIamV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.Policy
+      request: GoogleIAMV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.Policy
 
     /// See `AutokeyAdminClient.getIamPolicy`.
     func getIamPolicy(
-      request: GoogleIamV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.Policy
+      request: GoogleIAMV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.Policy
 
     /// See `AutokeyAdminClient.testIamPermissions`.
     func testIamPermissions(
-      request: GoogleIamV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.TestIamPermissionsResponse
+      request: GoogleIAMV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.TestIamPermissionsResponse
   }
 }
 
 // Default implementations
 extension Clients.AutokeyAdminProtocol {
   public func updateAutokeyConfig(request: UpdateAutokeyConfigRequest) async throws
-    -> GoogleCloudKmsV1.AutokeyConfig
+    -> GoogleCloudKMSV1.AutokeyConfig
   {
     try await self.updateAutokeyConfig(request: request, options: .init())
   }
 
   public func updateAutokeyConfig(
     request: UpdateAutokeyConfigRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudKmsV1.AutokeyConfig {
+  ) async throws -> GoogleCloudKMSV1.AutokeyConfig {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func updateAutokeyConfig(
     autokeyConfig: AutokeyConfig?,
     updateMask: GoogleCloudWkt.FieldMask?,
-  ) async throws -> GoogleCloudKmsV1.AutokeyConfig {
+  ) async throws -> GoogleCloudKMSV1.AutokeyConfig {
     let request = UpdateAutokeyConfigRequest().with {
       $0.autokeyConfig = autokeyConfig
       $0.updateMask = updateMask
@@ -339,20 +339,20 @@ extension Clients.AutokeyAdminProtocol {
   }
 
   public func getAutokeyConfig(request: GetAutokeyConfigRequest) async throws
-    -> GoogleCloudKmsV1.AutokeyConfig
+    -> GoogleCloudKMSV1.AutokeyConfig
   {
     try await self.getAutokeyConfig(request: request, options: .init())
   }
 
   public func getAutokeyConfig(
     request: GetAutokeyConfigRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudKmsV1.AutokeyConfig {
+  ) async throws -> GoogleCloudKMSV1.AutokeyConfig {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func getAutokeyConfig(
     name: Swift.String,
-  ) async throws -> GoogleCloudKmsV1.AutokeyConfig {
+  ) async throws -> GoogleCloudKMSV1.AutokeyConfig {
     let request = GetAutokeyConfigRequest().with {
       $0.name = name
     }
@@ -360,20 +360,20 @@ extension Clients.AutokeyAdminProtocol {
   }
 
   public func showEffectiveAutokeyConfig(request: ShowEffectiveAutokeyConfigRequest) async throws
-    -> GoogleCloudKmsV1.ShowEffectiveAutokeyConfigResponse
+    -> GoogleCloudKMSV1.ShowEffectiveAutokeyConfigResponse
   {
     try await self.showEffectiveAutokeyConfig(request: request, options: .init())
   }
 
   public func showEffectiveAutokeyConfig(
     request: ShowEffectiveAutokeyConfigRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudKmsV1.ShowEffectiveAutokeyConfigResponse {
+  ) async throws -> GoogleCloudKMSV1.ShowEffectiveAutokeyConfigResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func showEffectiveAutokeyConfig(
     parent: Swift.String,
-  ) async throws -> GoogleCloudKmsV1.ShowEffectiveAutokeyConfigResponse {
+  ) async throws -> GoogleCloudKMSV1.ShowEffectiveAutokeyConfigResponse {
     let request = ShowEffectiveAutokeyConfigRequest().with {
       $0.parent = parent
     }
@@ -420,39 +420,39 @@ extension Clients.AutokeyAdminProtocol {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
-  public func setIamPolicy(request: GoogleIamV1.SetIamPolicyRequest) async throws
-    -> GoogleIamV1.Policy
+  public func setIamPolicy(request: GoogleIAMV1.SetIamPolicyRequest) async throws
+    -> GoogleIAMV1.Policy
   {
     try await self.setIamPolicy(request: request, options: .init())
   }
 
   public func setIamPolicy(
-    request: GoogleIamV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleIamV1.Policy {
+    request: GoogleIAMV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+  ) async throws -> GoogleIAMV1.Policy {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
-  public func getIamPolicy(request: GoogleIamV1.GetIamPolicyRequest) async throws
-    -> GoogleIamV1.Policy
+  public func getIamPolicy(request: GoogleIAMV1.GetIamPolicyRequest) async throws
+    -> GoogleIAMV1.Policy
   {
     try await self.getIamPolicy(request: request, options: .init())
   }
 
   public func getIamPolicy(
-    request: GoogleIamV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleIamV1.Policy {
+    request: GoogleIAMV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+  ) async throws -> GoogleIAMV1.Policy {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
-  public func testIamPermissions(request: GoogleIamV1.TestIamPermissionsRequest) async throws
-    -> GoogleIamV1.TestIamPermissionsResponse
+  public func testIamPermissions(request: GoogleIAMV1.TestIamPermissionsRequest) async throws
+    -> GoogleIAMV1.TestIamPermissionsResponse
   {
     try await self.testIamPermissions(request: request, options: .init())
   }
 
   public func testIamPermissions(
-    request: GoogleIamV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleIamV1.TestIamPermissionsResponse {
+    request: GoogleIAMV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
+  ) async throws -> GoogleIAMV1.TestIamPermissionsResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 

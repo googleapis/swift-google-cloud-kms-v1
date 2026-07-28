@@ -20,7 +20,7 @@ import Foundation
 #endif
 import GoogleCloudLocation
 import GoogleCloudWkt
-import GoogleIamV1
+import GoogleIAMV1
 import GoogleLongrunning
 import GoogleRpc
 import GoogleCloudGax
@@ -151,7 +151,7 @@ public class AutokeyClient: Clients.AutokeyProtocol {
   /// @Snippet(path: "Autokey_GetKeyHandle")
   public func getKeyHandle(
     request: GetKeyHandleRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudKmsV1.KeyHandle {
+  ) async throws -> GoogleCloudKMSV1.KeyHandle {
     try await self.inner.getKeyHandle(request: request, options: options)
   }
 
@@ -162,7 +162,7 @@ public class AutokeyClient: Clients.AutokeyProtocol {
   /// @Snippet(path: "Autokey_ListKeyHandles")
   public func listKeyHandles(
     request: ListKeyHandlesRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudKmsV1.ListKeyHandlesResponse {
+  ) async throws -> GoogleCloudKMSV1.ListKeyHandlesResponse {
     try await self.inner.listKeyHandles(request: request, options: options)
   }
 
@@ -174,7 +174,7 @@ public class AutokeyClient: Clients.AutokeyProtocol {
   public func listKeyHandles(
     byItem: ListKeyHandlesRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<KeyHandle, Swift.Error> {
-    let listRpc = { (token: Swift.String) async throws -> GoogleCloudKmsV1.ListKeyHandlesResponse in
+    let listRpc = { (token: Swift.String) async throws -> GoogleCloudKMSV1.ListKeyHandlesResponse in
       var request = byItem
       request.pageToken = token
       return try await self.listKeyHandles(request: request, options: options)
@@ -257,8 +257,8 @@ public class AutokeyClient: Clients.AutokeyProtocol {
   ///
   /// @Snippet(path: "Autokey_SetIamPolicy")
   public func setIamPolicy(
-    request: GoogleIamV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleIamV1.Policy {
+    request: GoogleIAMV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+  ) async throws -> GoogleIAMV1.Policy {
     try await self.inner.setIamPolicy(request: request, options: options)
   }
 
@@ -267,8 +267,8 @@ public class AutokeyClient: Clients.AutokeyProtocol {
   ///
   /// @Snippet(path: "Autokey_GetIamPolicy")
   public func getIamPolicy(
-    request: GoogleIamV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleIamV1.Policy {
+    request: GoogleIAMV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+  ) async throws -> GoogleIAMV1.Policy {
     try await self.inner.getIamPolicy(request: request, options: options)
   }
 
@@ -282,8 +282,8 @@ public class AutokeyClient: Clients.AutokeyProtocol {
   ///
   /// @Snippet(path: "Autokey_TestIamPermissions")
   public func testIamPermissions(
-    request: GoogleIamV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleIamV1.TestIamPermissionsResponse {
+    request: GoogleIAMV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
+  ) async throws -> GoogleIAMV1.TestIamPermissionsResponse {
     try await self.inner.testIamPermissions(request: request, options: options)
   }
 
@@ -322,16 +322,16 @@ extension Clients {
     ) async throws -> any GoogleCloudGax.PollableOperation<KeyHandle>
 
     /// See `AutokeyClient.getKeyHandle`.
-    func getKeyHandle(request: GetKeyHandleRequest) async throws -> GoogleCloudKmsV1.KeyHandle
+    func getKeyHandle(request: GetKeyHandleRequest) async throws -> GoogleCloudKMSV1.KeyHandle
 
     /// See `AutokeyClient.getKeyHandle`.
     func getKeyHandle(
       name: Swift.String,
-    ) async throws -> GoogleCloudKmsV1.KeyHandle
+    ) async throws -> GoogleCloudKMSV1.KeyHandle
 
     /// See `AutokeyClient.listKeyHandles`.
     func listKeyHandles(request: ListKeyHandlesRequest) async throws
-      -> GoogleCloudKmsV1.ListKeyHandlesResponse
+      -> GoogleCloudKMSV1.ListKeyHandlesResponse
 
     /// See `AutokeyClient.listKeyHandles`.
     func listKeyHandles(
@@ -357,14 +357,14 @@ extension Clients {
       -> GoogleCloudLocation.Location
 
     /// See `AutokeyClient.setIamPolicy`.
-    func setIamPolicy(request: GoogleIamV1.SetIamPolicyRequest) async throws -> GoogleIamV1.Policy
+    func setIamPolicy(request: GoogleIAMV1.SetIamPolicyRequest) async throws -> GoogleIAMV1.Policy
 
     /// See `AutokeyClient.getIamPolicy`.
-    func getIamPolicy(request: GoogleIamV1.GetIamPolicyRequest) async throws -> GoogleIamV1.Policy
+    func getIamPolicy(request: GoogleIAMV1.GetIamPolicyRequest) async throws -> GoogleIAMV1.Policy
 
     /// See `AutokeyClient.testIamPermissions`.
-    func testIamPermissions(request: GoogleIamV1.TestIamPermissionsRequest) async throws
-      -> GoogleIamV1.TestIamPermissionsResponse
+    func testIamPermissions(request: GoogleIAMV1.TestIamPermissionsRequest) async throws
+      -> GoogleIAMV1.TestIamPermissionsResponse
 
     /// See `AutokeyClient.createKeyHandle`.
     func createKeyHandle(
@@ -379,12 +379,12 @@ extension Clients {
     /// See `AutokeyClient.getKeyHandle`.
     func getKeyHandle(
       request: GetKeyHandleRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.KeyHandle
+    ) async throws -> GoogleCloudKMSV1.KeyHandle
 
     /// See `AutokeyClient.listKeyHandles`.
     func listKeyHandles(
       request: ListKeyHandlesRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ListKeyHandlesResponse
+    ) async throws -> GoogleCloudKMSV1.ListKeyHandlesResponse
 
     /// See `AutokeyClient.listKeyHandles`.
     func listKeyHandles(
@@ -408,18 +408,18 @@ extension Clients {
 
     /// See `AutokeyClient.setIamPolicy`.
     func setIamPolicy(
-      request: GoogleIamV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.Policy
+      request: GoogleIAMV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.Policy
 
     /// See `AutokeyClient.getIamPolicy`.
     func getIamPolicy(
-      request: GoogleIamV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.Policy
+      request: GoogleIAMV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.Policy
 
     /// See `AutokeyClient.testIamPermissions`.
     func testIamPermissions(
-      request: GoogleIamV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.TestIamPermissionsResponse
+      request: GoogleIAMV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.TestIamPermissionsResponse
   }
 }
 
@@ -466,20 +466,20 @@ extension Clients.AutokeyProtocol {
     return try await self.createKeyHandle(withPolling: request)
   }
 
-  public func getKeyHandle(request: GetKeyHandleRequest) async throws -> GoogleCloudKmsV1.KeyHandle
+  public func getKeyHandle(request: GetKeyHandleRequest) async throws -> GoogleCloudKMSV1.KeyHandle
   {
     try await self.getKeyHandle(request: request, options: .init())
   }
 
   public func getKeyHandle(
     request: GetKeyHandleRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudKmsV1.KeyHandle {
+  ) async throws -> GoogleCloudKMSV1.KeyHandle {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func getKeyHandle(
     name: Swift.String,
-  ) async throws -> GoogleCloudKmsV1.KeyHandle {
+  ) async throws -> GoogleCloudKMSV1.KeyHandle {
     let request = GetKeyHandleRequest().with {
       $0.name = name
     }
@@ -487,14 +487,14 @@ extension Clients.AutokeyProtocol {
   }
 
   public func listKeyHandles(request: ListKeyHandlesRequest) async throws
-    -> GoogleCloudKmsV1.ListKeyHandlesResponse
+    -> GoogleCloudKMSV1.ListKeyHandlesResponse
   {
     try await self.listKeyHandles(request: request, options: .init())
   }
 
   public func listKeyHandles(
     request: ListKeyHandlesRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudKmsV1.ListKeyHandlesResponse {
+  ) async throws -> GoogleCloudKMSV1.ListKeyHandlesResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
@@ -507,7 +507,7 @@ extension Clients.AutokeyProtocol {
   public func listKeyHandles(
     byItem: ListKeyHandlesRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<KeyHandle, Swift.Error> {
-    let listRpc = { (token: Swift.String) async throws -> GoogleCloudKmsV1.ListKeyHandlesResponse in
+    let listRpc = { (token: Swift.String) async throws -> GoogleCloudKMSV1.ListKeyHandlesResponse in
       throw GoogleCloudGax.RequestError.unimplemented
     }
     return GoogleCloudGax.PaginatedResponseSequence(listRpc: listRpc)
@@ -562,39 +562,39 @@ extension Clients.AutokeyProtocol {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
-  public func setIamPolicy(request: GoogleIamV1.SetIamPolicyRequest) async throws
-    -> GoogleIamV1.Policy
+  public func setIamPolicy(request: GoogleIAMV1.SetIamPolicyRequest) async throws
+    -> GoogleIAMV1.Policy
   {
     try await self.setIamPolicy(request: request, options: .init())
   }
 
   public func setIamPolicy(
-    request: GoogleIamV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleIamV1.Policy {
+    request: GoogleIAMV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+  ) async throws -> GoogleIAMV1.Policy {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
-  public func getIamPolicy(request: GoogleIamV1.GetIamPolicyRequest) async throws
-    -> GoogleIamV1.Policy
+  public func getIamPolicy(request: GoogleIAMV1.GetIamPolicyRequest) async throws
+    -> GoogleIAMV1.Policy
   {
     try await self.getIamPolicy(request: request, options: .init())
   }
 
   public func getIamPolicy(
-    request: GoogleIamV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleIamV1.Policy {
+    request: GoogleIAMV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+  ) async throws -> GoogleIAMV1.Policy {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
-  public func testIamPermissions(request: GoogleIamV1.TestIamPermissionsRequest) async throws
-    -> GoogleIamV1.TestIamPermissionsResponse
+  public func testIamPermissions(request: GoogleIAMV1.TestIamPermissionsRequest) async throws
+    -> GoogleIAMV1.TestIamPermissionsResponse
   {
     try await self.testIamPermissions(request: request, options: .init())
   }
 
   public func testIamPermissions(
-    request: GoogleIamV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleIamV1.TestIamPermissionsResponse {
+    request: GoogleIAMV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
+  ) async throws -> GoogleIAMV1.TestIamPermissionsResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 

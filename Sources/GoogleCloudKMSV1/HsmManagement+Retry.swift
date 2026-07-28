@@ -20,7 +20,7 @@ import Foundation
 #endif
 import GoogleCloudLocation
 import GoogleCloudWkt
-import GoogleIamV1
+import GoogleIAMV1
 import GoogleLongrunning
 import GoogleRpc
 import GoogleCloudGax
@@ -54,14 +54,14 @@ extension Clients {
 
     public func listSingleTenantHsmInstances(
       request: ListSingleTenantHsmInstancesRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ListSingleTenantHsmInstancesResponse {
+    ) async throws -> GoogleCloudKMSV1.ListSingleTenantHsmInstancesResponse {
       try await self._intercept(
         request: request,
         options: options,
         idempotent: true,
         action: {
           (r: ListSingleTenantHsmInstancesRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudKmsV1.ListSingleTenantHsmInstancesResponse
+            -> GoogleCloudKMSV1.ListSingleTenantHsmInstancesResponse
           in
           return try await self.inner.listSingleTenantHsmInstances(request: r, options: o)
         })
@@ -69,14 +69,14 @@ extension Clients {
 
     public func getSingleTenantHsmInstance(
       request: GetSingleTenantHsmInstanceRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.SingleTenantHsmInstance {
+    ) async throws -> GoogleCloudKMSV1.SingleTenantHsmInstance {
       try await self._intercept(
         request: request,
         options: options,
         idempotent: true,
         action: {
           (r: GetSingleTenantHsmInstanceRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudKmsV1.SingleTenantHsmInstance
+            -> GoogleCloudKMSV1.SingleTenantHsmInstance
           in
           return try await self.inner.getSingleTenantHsmInstance(request: r, options: o)
         })
@@ -114,14 +114,14 @@ extension Clients {
 
     public func approveSingleTenantHsmInstanceProposal(
       request: ApproveSingleTenantHsmInstanceProposalRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ApproveSingleTenantHsmInstanceProposalResponse {
+    ) async throws -> GoogleCloudKMSV1.ApproveSingleTenantHsmInstanceProposalResponse {
       try await self._intercept(
         request: request,
         options: options,
         idempotent: false,
         action: {
           (r: ApproveSingleTenantHsmInstanceProposalRequest, o: GoogleCloudGax.RequestOptions)
-            async throws -> GoogleCloudKmsV1.ApproveSingleTenantHsmInstanceProposalResponse
+            async throws -> GoogleCloudKMSV1.ApproveSingleTenantHsmInstanceProposalResponse
           in
           return try await self.inner.approveSingleTenantHsmInstanceProposal(request: r, options: o)
         })
@@ -144,14 +144,14 @@ extension Clients {
 
     public func getSingleTenantHsmInstanceProposal(
       request: GetSingleTenantHsmInstanceProposalRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.SingleTenantHsmInstanceProposal {
+    ) async throws -> GoogleCloudKMSV1.SingleTenantHsmInstanceProposal {
       try await self._intercept(
         request: request,
         options: options,
         idempotent: true,
         action: {
           (r: GetSingleTenantHsmInstanceProposalRequest, o: GoogleCloudGax.RequestOptions)
-            async throws -> GoogleCloudKmsV1.SingleTenantHsmInstanceProposal
+            async throws -> GoogleCloudKMSV1.SingleTenantHsmInstanceProposal
           in
           return try await self.inner.getSingleTenantHsmInstanceProposal(request: r, options: o)
         })
@@ -159,14 +159,14 @@ extension Clients {
 
     public func listSingleTenantHsmInstanceProposals(
       request: ListSingleTenantHsmInstanceProposalsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ListSingleTenantHsmInstanceProposalsResponse {
+    ) async throws -> GoogleCloudKMSV1.ListSingleTenantHsmInstanceProposalsResponse {
       try await self._intercept(
         request: request,
         options: options,
         idempotent: true,
         action: {
           (r: ListSingleTenantHsmInstanceProposalsRequest, o: GoogleCloudGax.RequestOptions)
-            async throws -> GoogleCloudKmsV1.ListSingleTenantHsmInstanceProposalsResponse
+            async throws -> GoogleCloudKMSV1.ListSingleTenantHsmInstanceProposalsResponse
           in
           return try await self.inner.listSingleTenantHsmInstanceProposals(request: r, options: o)
         })
@@ -217,45 +217,45 @@ extension Clients {
     }
 
     public func setIamPolicy(
-      request: GoogleIamV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.Policy {
+      request: GoogleIAMV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.Policy {
       try await self._intercept(
         request: request,
         options: options,
         idempotent: false,
         action: {
-          (r: GoogleIamV1.SetIamPolicyRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleIamV1.Policy
+          (r: GoogleIAMV1.SetIamPolicyRequest, o: GoogleCloudGax.RequestOptions) async throws
+            -> GoogleIAMV1.Policy
           in
           return try await self.inner.setIamPolicy(request: r, options: o)
         })
     }
 
     public func getIamPolicy(
-      request: GoogleIamV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.Policy {
+      request: GoogleIAMV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.Policy {
       try await self._intercept(
         request: request,
         options: options,
         idempotent: true,
         action: {
-          (r: GoogleIamV1.GetIamPolicyRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleIamV1.Policy
+          (r: GoogleIAMV1.GetIamPolicyRequest, o: GoogleCloudGax.RequestOptions) async throws
+            -> GoogleIAMV1.Policy
           in
           return try await self.inner.getIamPolicy(request: r, options: o)
         })
     }
 
     public func testIamPermissions(
-      request: GoogleIamV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.TestIamPermissionsResponse {
+      request: GoogleIAMV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.TestIamPermissionsResponse {
       try await self._intercept(
         request: request,
         options: options,
         idempotent: false,
         action: {
-          (r: GoogleIamV1.TestIamPermissionsRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleIamV1.TestIamPermissionsResponse
+          (r: GoogleIAMV1.TestIamPermissionsRequest, o: GoogleCloudGax.RequestOptions) async throws
+            -> GoogleIAMV1.TestIamPermissionsResponse
           in
           return try await self.inner.testIamPermissions(request: r, options: o)
         })

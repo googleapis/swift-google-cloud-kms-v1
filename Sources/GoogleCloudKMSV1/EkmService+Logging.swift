@@ -20,21 +20,21 @@ import Foundation
 #endif
 import GoogleCloudLocation
 import GoogleCloudWkt
-import GoogleIamV1
+import GoogleIAMV1
 import GoogleLongrunning
 import GoogleCloudGax
 import struct Logging.Logger
 
 extension Clients {
-  final class AutokeyAdminLogging: AutokeyAdminStub {
-    let inner: any AutokeyAdminStub
+  final class EkmServiceLogging: EkmServiceStub {
+    let inner: any EkmServiceStub
     let logger: Logger
 
-    public init(_ inner: any AutokeyAdminStub, logger: Logger) {
+    public init(_ inner: any EkmServiceStub, logger: Logger) {
       var logger = logger
       logger[metadataKey: "gcp.artifact.id"] = "google-cloud-kms-v1"
       logger[metadataKey: "gcp.client.service"] = "cloudkms"
-      logger[metadataKey: "gcp.experimental.swift.client"] = "AutokeyAdmin"
+      logger[metadataKey: "gcp.experimental.swift.client"] = "EkmService"
       self.inner = inner
       self.logger = logger
     }
@@ -59,48 +59,108 @@ extension Clients {
       }
     }
 
-    public func updateAutokeyConfig(
-      request: UpdateAutokeyConfigRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.AutokeyConfig {
+    public func listEkmConnections(
+      request: ListEkmConnectionsRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudKMSV1.ListEkmConnectionsResponse {
       try await self._intercept(
         request: request,
         options: options,
-        name: "updateAutokeyConfig",
+        name: "listEkmConnections",
         action: {
-          (r: UpdateAutokeyConfigRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudKmsV1.AutokeyConfig
+          (r: ListEkmConnectionsRequest, o: GoogleCloudGax.RequestOptions) async throws
+            -> GoogleCloudKMSV1.ListEkmConnectionsResponse
           in
-          return try await self.inner.updateAutokeyConfig(request: r, options: o)
+          return try await self.inner.listEkmConnections(request: r, options: o)
         })
     }
 
-    public func getAutokeyConfig(
-      request: GetAutokeyConfigRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.AutokeyConfig {
+    public func getEkmConnection(
+      request: GetEkmConnectionRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudKMSV1.EkmConnection {
       try await self._intercept(
         request: request,
         options: options,
-        name: "getAutokeyConfig",
+        name: "getEkmConnection",
         action: {
-          (r: GetAutokeyConfigRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudKmsV1.AutokeyConfig
+          (r: GetEkmConnectionRequest, o: GoogleCloudGax.RequestOptions) async throws
+            -> GoogleCloudKMSV1.EkmConnection
           in
-          return try await self.inner.getAutokeyConfig(request: r, options: o)
+          return try await self.inner.getEkmConnection(request: r, options: o)
         })
     }
 
-    public func showEffectiveAutokeyConfig(
-      request: ShowEffectiveAutokeyConfigRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudKmsV1.ShowEffectiveAutokeyConfigResponse {
+    public func createEkmConnection(
+      request: CreateEkmConnectionRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudKMSV1.EkmConnection {
       try await self._intercept(
         request: request,
         options: options,
-        name: "showEffectiveAutokeyConfig",
+        name: "createEkmConnection",
         action: {
-          (r: ShowEffectiveAutokeyConfigRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudKmsV1.ShowEffectiveAutokeyConfigResponse
+          (r: CreateEkmConnectionRequest, o: GoogleCloudGax.RequestOptions) async throws
+            -> GoogleCloudKMSV1.EkmConnection
           in
-          return try await self.inner.showEffectiveAutokeyConfig(request: r, options: o)
+          return try await self.inner.createEkmConnection(request: r, options: o)
+        })
+    }
+
+    public func updateEkmConnection(
+      request: UpdateEkmConnectionRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudKMSV1.EkmConnection {
+      try await self._intercept(
+        request: request,
+        options: options,
+        name: "updateEkmConnection",
+        action: {
+          (r: UpdateEkmConnectionRequest, o: GoogleCloudGax.RequestOptions) async throws
+            -> GoogleCloudKMSV1.EkmConnection
+          in
+          return try await self.inner.updateEkmConnection(request: r, options: o)
+        })
+    }
+
+    public func getEkmConfig(
+      request: GetEkmConfigRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudKMSV1.EkmConfig {
+      try await self._intercept(
+        request: request,
+        options: options,
+        name: "getEkmConfig",
+        action: {
+          (r: GetEkmConfigRequest, o: GoogleCloudGax.RequestOptions) async throws
+            -> GoogleCloudKMSV1.EkmConfig
+          in
+          return try await self.inner.getEkmConfig(request: r, options: o)
+        })
+    }
+
+    public func updateEkmConfig(
+      request: UpdateEkmConfigRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudKMSV1.EkmConfig {
+      try await self._intercept(
+        request: request,
+        options: options,
+        name: "updateEkmConfig",
+        action: {
+          (r: UpdateEkmConfigRequest, o: GoogleCloudGax.RequestOptions) async throws
+            -> GoogleCloudKMSV1.EkmConfig
+          in
+          return try await self.inner.updateEkmConfig(request: r, options: o)
+        })
+    }
+
+    public func verifyConnectivity(
+      request: VerifyConnectivityRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleCloudKMSV1.VerifyConnectivityResponse {
+      try await self._intercept(
+        request: request,
+        options: options,
+        name: "verifyConnectivity",
+        action: {
+          (r: VerifyConnectivityRequest, o: GoogleCloudGax.RequestOptions) async throws
+            -> GoogleCloudKMSV1.VerifyConnectivityResponse
+          in
+          return try await self.inner.verifyConnectivity(request: r, options: o)
         })
     }
 
@@ -135,45 +195,45 @@ extension Clients {
     }
 
     public func setIamPolicy(
-      request: GoogleIamV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.Policy {
+      request: GoogleIAMV1.SetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.Policy {
       try await self._intercept(
         request: request,
         options: options,
         name: "setIamPolicy",
         action: {
-          (r: GoogleIamV1.SetIamPolicyRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleIamV1.Policy
+          (r: GoogleIAMV1.SetIamPolicyRequest, o: GoogleCloudGax.RequestOptions) async throws
+            -> GoogleIAMV1.Policy
           in
           return try await self.inner.setIamPolicy(request: r, options: o)
         })
     }
 
     public func getIamPolicy(
-      request: GoogleIamV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.Policy {
+      request: GoogleIAMV1.GetIamPolicyRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.Policy {
       try await self._intercept(
         request: request,
         options: options,
         name: "getIamPolicy",
         action: {
-          (r: GoogleIamV1.GetIamPolicyRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleIamV1.Policy
+          (r: GoogleIAMV1.GetIamPolicyRequest, o: GoogleCloudGax.RequestOptions) async throws
+            -> GoogleIAMV1.Policy
           in
           return try await self.inner.getIamPolicy(request: r, options: o)
         })
     }
 
     public func testIamPermissions(
-      request: GoogleIamV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleIamV1.TestIamPermissionsResponse {
+      request: GoogleIAMV1.TestIamPermissionsRequest, options: GoogleCloudGax.RequestOptions
+    ) async throws -> GoogleIAMV1.TestIamPermissionsResponse {
       try await self._intercept(
         request: request,
         options: options,
         name: "testIamPermissions",
         action: {
-          (r: GoogleIamV1.TestIamPermissionsRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleIamV1.TestIamPermissionsResponse
+          (r: GoogleIAMV1.TestIamPermissionsRequest, o: GoogleCloudGax.RequestOptions) async throws
+            -> GoogleIAMV1.TestIamPermissionsResponse
           in
           return try await self.inner.testIamPermissions(request: r, options: o)
         })
